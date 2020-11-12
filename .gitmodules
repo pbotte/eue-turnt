@@ -1,0 +1,3 @@
+[submodule "wordpress-root/qr"]
+	path = wordpress-root/qr
+	url = https://git.code.sf.net/p/phpqrcode/git
