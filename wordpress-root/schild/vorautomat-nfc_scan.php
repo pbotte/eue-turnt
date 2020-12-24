@@ -140,7 +140,7 @@ if ($result = $conn->query($sql)) {
             echo "Du erhaeltst die Tuete aus Slot Nr: $ZuvergebenderSlot\n";
             var_dump($SlotBefuellungsstand);
             //Die folgende Zeile auskommentieren, wenn im Debug-Modus, damit nichts ausgegeben wird
-            //$SlotBefuellungsstand[$ZuvergebenderSlot] = 0; //Dieser Slot soll ausgeloest werden
+            $SlotBefuellungsstand[$ZuvergebenderSlot] = 0; //Dieser Slot soll ausgeloest werden
             $sql = "INSERT INTO `eue_automat_status` (`sessionID`, `Slot0`, `Slot1`, `Slot2`, `Slot3`, `Slot4`) VALUES ('NFC mit Tags: ".$TagsAlsStr."', ";
             for ($i=0; $i<5; $i++) {
                 if ($i >0) {
