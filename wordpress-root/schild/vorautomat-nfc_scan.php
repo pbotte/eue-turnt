@@ -33,7 +33,7 @@ if ($SicherheitErfuellt) {
 
 $servername = "rdbms.strato.de";
 $username = "U4099678";
-$password = "rawxem-dukXef-segty2";
+$password = "...";
 $dbname = "DB4099678";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
