@@ -1,4 +1,6 @@
-# eue-turnt
+# eue-turnt und eue-turnt Kids
+
+Dieses Repo umfasst nun die Funktionalität für den Eue-Turnt-Rundlauf (QR-Code Schilder mit Handyabruf) und dem Eue-Turnt-Kids-Rundlauf (RFID-Schlüsselanhänger).
 
 ## Hinweise zum Repository
 
