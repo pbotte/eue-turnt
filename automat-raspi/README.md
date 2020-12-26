@@ -20,6 +20,10 @@
 
 ## NFC-Scanner
 
+Verwendet wurden die folgenden NFC-Karten und Lesegeräte:
+* Neuftech USB RFID Reader Reader für EM4100
+* LIBO 125KHz Tags RFID EM4100 TK4100 Schlüsselanhänger (100 Stück, 20 je Farbe, schwarz, rot, geld, grün, blau)
+
 Damit der Nutzer pi auch auf den Scanner zugreifen kann, d.h. die Datei `nfc-reader.py` ausgeführt werden kann:
 
 Inhalt der Datei `/etc/udev/rules.d/99-hidraw.rules`:
@@ -32,3 +36,6 @@ Außerdem noch den Nutzer pi in die entsprechende Gruppe:
 sudo usermod -a -G plugdev pi
 ```
 
+## Barcode-Scanner
+
+Wird derzeit nicht in der Praxis verwendet, ist aber trotzdem hier der vollständigkeitshalber. 
