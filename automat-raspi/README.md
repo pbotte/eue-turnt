@@ -17,3 +17,18 @@
 ## Weiteres
 
 - QR-Code-Erzeugung: http://sourceforge.net/apps/mediawiki/phpqrcode/index.php?title=Main_Page
+
+## NFC-Scanner
+
+Damit der Nutzer pi auch auf den Scanner zugreifen kann, d.h. die Datei `nfc-reader.py` ausgeführt werden kann:
+
+Inhalt der Datei `/etc/udev/rules.d/99-hidraw.rules`:
+```bash
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="plugdev"
+```
+
+Außerdem noch den Nutzer pi in die entsprechende Gruppe:
+```bash
+sudo usermod -a -G plugdev pi
+```
+
