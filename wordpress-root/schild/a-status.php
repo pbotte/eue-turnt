@@ -4,7 +4,7 @@ $username = "U4099678";
 $password = "...";
 $dbname = "DB4099678";
 
-$AnzGesamtSlots = 5;
+$AnzGesamtSlots = 16;
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
@@ -25,12 +25,15 @@ $sql = "SELECT * FROM `eue_automat_status` ORDER BY `zeit` DESC LIMIT 1";
 $AnzahlVorhandenerSlots = 0;
 if ($result = $conn->query($sql)) {
     while ($row = $result->fetch_assoc()) {
+        $mystr = "";
         for ($i=0; $i<$AnzGesamtSlots; $i++) {
             if ($row["Slot".$i]>0) {
                 $AnzahlVorhandenerSlots++;
             }
+            $mystr .= sprintf('%d,', $row["Slot".$i]);
         }
-        printf('{"slots":[%d,%d,%d,%d,%d], "rest":%d, "total":%d, "automaten_feedback_zeit":%d, "time":%d}', $row["Slot0"], $row["Slot1"], $row["Slot2"], $row["Slot3"], $row["Slot4"],
+        $mystr = substr($mystr, 0, -1); //Delete last comma
+        printf('{"slots":[%s], "rest":%d, "total":%d, "automaten_feedback_zeit":%d, "time":%d}', $mystr,
             $AnzahlVorhandenerSlots, $AnzGesamtSlots, $LetzteZeit, time());
     }
     $result->free();
