@@ -71,6 +71,15 @@ CREATE TABLE `eue_automat_status` (
 
 Die Lebenszeit der Session-Cookies wird hochgesetzt. Sonst geht die Session zwischen den QR-Code-Scanns immer wieder verloren.
 
+```php index.php
+<?php
+ini_set('session.gc_maxlifetime', 60*60*10); // expires in 10h
+ini_set('session.cookie_lifetime', 60*60*10); // expires in 10h
+session_start();
+
+//...
+```
+
 ### Gewähltes Theme
 
 Mesmerize
@@ -91,6 +100,8 @@ Die folgenden Erweiterungen sind vorteilhaft oder sogar notwendig:
 Teils auch zum Erfüllen der DSGVO-Richtlinie. So konnte z.B. Verhindert werden, dass Dinge aus einem Google-Cache geladen werden.
 
 ### PHP Code Snippets innerhalb von Wordpress-Seiten
+
+WICHTIG ist: Autoptimize ausführen, damit verschwinden die Fehler zu "Warning: Cannot modify header information - headers already sent by ...".
 
 #### Tracking Name: Automat-Erledigte-Schilder
 
