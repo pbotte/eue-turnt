@@ -5,11 +5,11 @@ Servo myservo;
 
 enum states {STANDBY, REDEEM_START, REDEEM_PROGRESS, REDEEM_FINISH, ERRORSTATE};
 
-#define CONFIG_ROTATION_PIN 2
+#define CONFIG_ROTATION_PIN 5
 #define CONFIG_ID_PIN0 3
 #define CONFIG_ID_PIN1 4
 #define CONFIG_MOTOR_PIN 9
-#define CONFIG_REED_CONTACT_PIN 10
+#define CONFIG_REED_CONTACT_PIN 2
 
 states act_state = STANDBY;
 states next_state = STANDBY;
@@ -58,6 +58,7 @@ void print_actual_state() {
   Serial.print(", \"config_id\": "); Serial.print(config_id);
   Serial.print(", \"motor_turning\": "); Serial.print(motor_turning);
   Serial.print(", \"redeem_count\": "); Serial.print(redeem_count);
+  Serial.print(", \"reed_contact_pin_state\": "); Serial.print(digitalRead(CONFIG_REED_CONTACT_PIN))
   Serial.println("}");
 }
 
@@ -88,6 +89,7 @@ void loop() {
   //FSM: switch to next state?
   if (next_state != act_state) {
     last_state_duration_ms = state_duration_ms;
+    state_duration_ms = 0;
     last_state = act_state;
     act_state = next_state;
     print_actual_state();
@@ -97,6 +99,10 @@ void loop() {
   byte incomingByte = 0; 
   if (Serial.available() > 0) {
     incomingByte = Serial.read();
+    if (incomingByte == '0') {
+      redeem_count = 0;
+      writeUnsignedIntIntoEEPROM(0, redeem_count);
+    }
   }
 
   //FSM: execute AND next state
