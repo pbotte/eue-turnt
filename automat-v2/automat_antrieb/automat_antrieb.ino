@@ -58,7 +58,7 @@ void print_actual_state() {
   Serial.print(", \"config_id\": "); Serial.print(config_id);
   Serial.print(", \"motor_turning\": "); Serial.print(motor_turning);
   Serial.print(", \"redeem_count\": "); Serial.print(redeem_count);
-  Serial.print(", \"reed_contact_pin_state\": "); Serial.print(digitalRead(CONFIG_REED_CONTACT_PIN))
+  Serial.print(", \"reed_contact_pin_state\": "); Serial.print(digitalRead(CONFIG_REED_CONTACT_PIN));
   Serial.println("}");
 }
 
