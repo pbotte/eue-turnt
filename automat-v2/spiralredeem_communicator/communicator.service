@@ -1,0 +1,14 @@
+[Unit]
+Description=Reads out a redeemspiral
+After=network.target syslog.target
+
+[Service]
+ExecStart=/home/pi/spiralredeem_communicator/communicator.py redeem1 /dev/ttyUSB0
+Restart=always
+RestartSec=5
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+

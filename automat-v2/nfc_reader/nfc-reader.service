@@ -1,0 +1,14 @@
+[Unit]
+Description=Reads the nfc-reader and sends data via local MQTT server
+After=network.target syslog.target
+
+[Service]
+ExecStart=/home/pi/nfc_reader/nfc-reader.py
+Restart=always
+RestartSec=60
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+
