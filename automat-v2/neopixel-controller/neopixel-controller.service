@@ -1,0 +1,13 @@
+[Unit]
+Description=Sets the neopixels according to MQTT data
+After=network.target syslog.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/neopixel_controller.py /dev/ttyUSB-light -v
+Restart=always
+RestartSec=60
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
