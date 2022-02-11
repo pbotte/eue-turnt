@@ -1,0 +1,15 @@
+[Unit]
+Description=Playes files according to MQTT data
+After=network.target syslog.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/sound_controller.py -v
+WorkingDirectory=/home/pi/
+Restart=always
+RestartSec=60
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+
